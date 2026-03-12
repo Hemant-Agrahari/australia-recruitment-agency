@@ -255,6 +255,19 @@ const Hello: React.FC<HelloProps> = ({ result }) => {
           <CustomHead {...metadata} />
           {(blogData?.type == "Service" || blogData?.template?.startsWith("services_")) && (
             <Head>
+              {/* Preload hero banner image for faster LCP */}
+              {firstImage && (() => {
+                const imgBase = `/_next/image?url=${encodeURIComponent(firstImage)}`;
+                return (
+                  <link
+                    rel="preload"
+                    as="image"
+                    imageSrcSet={`${imgBase}&w=640&q=75 640w, ${imgBase}&w=828&q=75 828w, ${imgBase}&w=1200&q=75 1200w`}
+                    imageSizes="(max-width: 768px) 100vw, 1200px"
+                    fetchPriority="high"
+                  />
+                );
+              })()}
               <script
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{
