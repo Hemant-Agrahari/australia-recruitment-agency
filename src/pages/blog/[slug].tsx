@@ -38,6 +38,8 @@ const HeadHunterExecutiveJobSearch: React.FC<BlogPageProps> = ({ post }) => {
   const formRef = useRef<HTMLElement>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isFormVisible, setIsFormVisible] = useState(false);
+  const [isLatestUpdatesVisible, setIsLatestUpdatesVisible] = useState(false);
+  const [isBlogFormVisible, setIsBlogFormVisible] = useState(false);
 
   const { author, blogData } = post?.data || {};
 
@@ -50,6 +52,24 @@ const HeadHunterExecutiveJobSearch: React.FC<BlogPageProps> = ({ post }) => {
   }, [blogData?.conclusion]);
 
   useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            if (entry.target.id === "latest-updates-section") setIsLatestUpdatesVisible(true);
+            if (entry.target.id === "footer-contact-form-section") setIsBlogFormVisible(true);
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: "200px" }
+    );
+
+    const latestUpdatesSection = document.getElementById("latest-updates-section");
+    const footerFormSection = document.getElementById("footer-contact-form-section");
+
+    if (latestUpdatesSection) observer.observe(latestUpdatesSection);
+    if (footerFormSection) observer.observe(footerFormSection);
+
     const handleScroll = () => {
       if (formRef.current) {
         const rect = formRef.current.getBoundingClientRect();
@@ -63,6 +83,8 @@ const HeadHunterExecutiveJobSearch: React.FC<BlogPageProps> = ({ post }) => {
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
+      if (latestUpdatesSection) observer.unobserve(latestUpdatesSection);
+      if (footerFormSection) observer.unobserve(footerFormSection);
     };
   }, []);
 
@@ -572,11 +594,13 @@ const HeadHunterExecutiveJobSearch: React.FC<BlogPageProps> = ({ post }) => {
                     className="pt-1"
                   />
                 </section>
-                <section>
-                  <LatestUpdates />
+                <section id="latest-updates-section">
+                  {isLatestUpdatesVisible && <LatestUpdates />}
                 </section>
-                <section ref={formRef} className="footer-contact-form">
-                  <BlogContactForm apiEndpoint="blogSidebarFooterForm" type="footer" id="blogs-footer-form" />
+                <section ref={formRef} id="footer-contact-form-section" className="footer-contact-form">
+                  {isBlogFormVisible && (
+                    <BlogContactForm apiEndpoint="blogSidebarFooterForm" type="footer" id="blogs-footer-form" />
+                  )}
                 </section>
                 {/* <div className="col-md-12">
                   <nav className="project-nav">

@@ -14,8 +14,8 @@ export default function GoogleCaptchaWrapper({
     <GoogleReCaptchaProvider
       reCaptchaKey={recaptchaKey ?? "NOT DEFINED"}
       scriptProps={{
-        async: false,
-        defer: false,
+        async: true,
+        defer: true,
         appendTo: "head",
         nonce: undefined,
       }}
