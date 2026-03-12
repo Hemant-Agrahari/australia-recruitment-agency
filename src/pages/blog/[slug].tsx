@@ -144,6 +144,15 @@ const HeadHunterExecutiveJobSearch: React.FC<BlogPageProps> = ({ post }) => {
     <>
       <CustomHead {...metadata} />
       <Head>
+        {/* Preload hero image for faster LCP */}
+        {blogData?.bannerImage && (
+          <link
+            rel="preload"
+            as="image"
+            href={`/_next/image?url=${encodeURIComponent(`${process.env.NEXT_PUBLIC_BACKEND_URL}${blogData.bannerImage}`)}&w=1200&q=75`}
+            fetchPriority="high"
+          />
+        )}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
