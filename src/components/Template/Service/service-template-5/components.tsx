@@ -558,12 +558,23 @@ export const ServicesBanner = ({
   ];
 
   return (
-    <section
-      className="main-banner"
-      style={{ backgroundImage: `url(${backgroundImage})` }}
-    >
+    <section className="main-banner" style={{ position: 'relative' }}>
+      {backgroundImage && (
+        <div style={{ position: 'absolute', inset: 0, zIndex: -1 }}>
+          <Image
+            src={backgroundImage}
+            alt={title || "Banner Background"}
+            fill
+            priority
+            fetchPriority="high"
+            style={{ objectFit: 'cover' }}
+            sizes="(max-width: 768px) 100vw, 1920px"
+            quality={80}
+          />
+        </div>
+      )}
       <div className="container-fluid c-pad-x">
-        <div className="banner-content">
+        <div className="banner-content" style={{ position: 'relative', zIndex: 1 }}>
           <h1>{title}</h1>
 
           <div className="banner-bottom-content">

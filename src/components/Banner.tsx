@@ -101,6 +101,7 @@ const Banner: React.FC<BannerProps> = memo(({ backgroundImage, title, alt }) => 
           alt={alt || "Banner Background"}
           fill
           priority
+          fetchPriority="high"
           sizes="(max-width:768px) 100vw, 1920px"
           style={{ objectFit: "cover" }}
           quality={80}

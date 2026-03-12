@@ -5,7 +5,7 @@ import dynamic from 'next/dynamic';
 
 // Dynamically import components
 const HireTalent = dynamic(() => import('@/components/HireTalent'));
-const Banner = dynamic(() => import('@/components/Banner'));
+import Banner from '@/components/Banner';
 const LatestUpdates = dynamic(() => import('@/components/LatestUpdates'));
 const HireACandidate = dynamic(() => import('@/components/forms/hireACandidate'));
 

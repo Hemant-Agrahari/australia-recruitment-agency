@@ -30,7 +30,8 @@ const FranchisePreview = ({ data }: any) => {
                   {data?.bannerImage &&
                     <Image
                       className="img-fluid w-100"
-                      loading="lazy"
+                      priority
+                      fetchPriority="high"
                       alt={`${data?.bannerImageDetails.alt}`}
                       title={`${data?.bannerImageDetails.title}`}
                       src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/${data?.bannerImage}`}

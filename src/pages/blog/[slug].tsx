@@ -415,7 +415,8 @@ const HeadHunterExecutiveJobSearch: React.FC<BlogPageProps> = ({ post }) => {
                       height={434}
                       alt={bannerImagedetails?.alt || "Blog banner image"}
                       title={bannerImagedetails?.title}
-                      priority
+                      priority={true}
+                      fetchPriority="high"
                       sizes="(max-width: 768px) 100vw, 1200px"
                     />
                     <ExploreWithAI

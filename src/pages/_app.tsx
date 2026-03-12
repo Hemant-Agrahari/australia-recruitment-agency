@@ -29,9 +29,38 @@ import "../../public/assets/css/intlTelInput.css";
 import 'react-toastify/dist/ReactToastify.css';
 import ScrollToTop from "@/components/scrolltotop";
 import Script from "next/script";
+import React, { useState, useEffect } from "react";
 
 // Fix: Directly apply Verdana in global styles (system font)
 export default function App({ Component, pageProps }: AppProps) {
+  const [loadChatWidget, setLoadChatWidget] = useState(false);
+
+  useEffect(() => {
+    // Load chat widget after 6 seconds to clear the initial hydration/TBT window
+    const timer = setTimeout(() => {
+      setLoadChatWidget(true);
+    }, 6000);
+
+    // Also load on user interaction as a fallback
+    const handleInteraction = () => {
+      setLoadChatWidget(true);
+      window.removeEventListener('scroll', handleInteraction);
+      window.removeEventListener('mousemove', handleInteraction);
+      window.removeEventListener('touchstart', handleInteraction);
+    };
+
+    window.addEventListener('scroll', handleInteraction, { passive: true });
+    window.addEventListener('mousemove', handleInteraction, { passive: true });
+    window.addEventListener('touchstart', handleInteraction, { passive: true });
+
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener('scroll', handleInteraction);
+      window.removeEventListener('mousemove', handleInteraction);
+      window.removeEventListener('touchstart', handleInteraction);
+    };
+  }, []);
+
   return (
     <>
       {/* Apply the font to the body directly in global styles */}
@@ -57,12 +86,14 @@ export default function App({ Component, pageProps }: AppProps) {
         src="../assets/scripts/bootstrap5.js"
         async
       />
-      <Script
-        src="https://widgets.leadconnectorhq.com/loader.js"
-        data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js"
-        data-widget-id="6992b33ea0e96a16f262b2c0"
-        strategy="lazyOnload"
-      />
+      {loadChatWidget && (
+        <Script
+          src="https://widgets.leadconnectorhq.com/loader.js"
+          data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js"
+          data-widget-id="6992b33ea0e96a16f262b2c0"
+          strategy="lazyOnload"
+        />
+      )}
       {/* Optional: Uncomment if you need to load Owl Carousel JS */}
       {/* <Script
         strategy="lazyOnload"
