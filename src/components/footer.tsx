@@ -249,7 +249,7 @@ const Footer = () => {
                     </h5>
                     <ul className="my-4 job-seeker-wrapper">
                       <li>
-                        <span className="c-ftr-icon1 ftr-icons"></span>
+                        <span className="c-ftr-icon1 ftr-icons" aria-hidden="true"></span>
                         <Link
                           prefetch={false}
                           href="tel:+44 20 3838 0743"
@@ -260,7 +260,7 @@ const Footer = () => {
                         </Link>
                       </li>
                       <li>
-                        <span className="c-ftr-icon2 ftr-icons"></span>
+                        <span className="c-ftr-icon2 ftr-icons" aria-hidden="true"></span>
                         <Link
                           prefetch={false}
                           href="tel:+19179009072"
@@ -271,7 +271,7 @@ const Footer = () => {
                         </Link>
                       </li>
                       <li>
-                        <span className="c-ftr-icon3 ftr-icons"></span>
+                        <span className="c-ftr-icon3 ftr-icons" aria-hidden="true"></span>
                         <Link
                           prefetch={false}
                           href="tel:+17809004752"
@@ -282,7 +282,7 @@ const Footer = () => {
                         </Link>
                       </li>
                       <li>
-                        <span className="c-ftr-icon4 ftr-icons"></span>
+                        <span className="c-ftr-icon4 ftr-icons" aria-hidden="true"></span>
                         <Link
                           prefetch={false}
                           href="tel:+918980018741"
@@ -302,7 +302,7 @@ const Footer = () => {
                       </h5>
                       <ul className="job-seeker-wrapper my-3 justify-content-between">
                         <li>
-                          <span className="f-icon">
+                          <span className="f-icon" aria-hidden="true">
                             <Image
                               src="/assets/images/email.svg"
                               alt="Email address"
@@ -329,7 +329,7 @@ const Footer = () => {
                             target="_blank"
                             aria-label="Visit Facebook page"
                           >
-                            <span className="f-icon">
+                            <span className="f-icon" aria-hidden="true">
                               <Image
                                 src="/assets/images/facebook.svg"
                                 alt="Facebook icon"

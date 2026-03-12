@@ -1,6 +1,6 @@
 import React, { memo, useMemo, useEffect, useState, useRef } from "react";
 import Link from "next/link";
-import { GetServerSideProps } from "next";
+import { GetStaticProps, GetStaticPaths } from "next";
 import { MdOutlineRemoveRedEye } from "react-icons/md";
 import { formatDate } from "@/utils/dateFormat";
 import ErrorLoading from "../404";
@@ -18,46 +18,28 @@ import BlogContactForm from "@/components/forms/BlogContactForm/BlogContactForm"
 import Author from "@/components/author/Author";
 const LatestUpdates = dynamic(() => import("@/components/LatestUpdates"));
 
-const NEXT_PUBLIC_FRONTEND_URL = process.env.NEXT_PUBLIC_FRONTEND_URL;
+interface PostData {
+  data: {
+    author: any;
+    relatedBlog: any[];
+    blogData: any;
+    prevBlog: any;
+    nextBlog: any;
+  };
+  status: number;
+}
 
-const HeadHunterExecutiveJobSearch: React.FC = () => {
+interface BlogPageProps {
+  post: PostData;
+}
+
+const HeadHunterExecutiveJobSearch: React.FC<BlogPageProps> = ({ post }) => {
   const router = useRouter();
-  const { slug: urlSlug } = router.query;
   const formRef = useRef<HTMLElement>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isFormVisible, setIsFormVisible] = useState(false);
-  const [post, setPost] = useState<any>(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(false);
 
-  useEffect(() => {
-    if (!urlSlug) return;
-
-    const fetchPost = async () => {
-      setLoading(true);
-      setError(false);
-      try {
-        const response = await fetch(
-          `${process.env.NEXT_PUBLIC_BACKEND_URL}/getService?slug=${urlSlug}`
-        );
-        const data = await response.json();
-        if (data && data.status === 200) {
-          setPost(data);
-        } else {
-          setError(true);
-        }
-      } catch (err) {
-        console.error("Error fetching post:", err);
-        setError(true);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchPost();
-  }, [urlSlug]);
-
-  const { author, relatedBlog, blogData, prevBlog, nextBlog } = post?.data || {};
+  const { author, blogData } = post?.data || {};
 
   const conclusion = useMemo(() => {
     try {
@@ -84,20 +66,10 @@ const HeadHunterExecutiveJobSearch: React.FC = () => {
     };
   }, []);
 
-  if (loading) {
-    return (
-      <div className="flex items-center justify-center min-h-screen">
-        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500"></div>
-      </div>
-    );
-  }
-
-  // Early return AFTER all hooks have been called
-  if (error || !post || post.status !== 200 || !post.data) {
+  if (!post || post.status !== 200 || !post.data || !post.data.blogData) {
     return <ErrorLoading />;
   }
 
-  console.log(blogData, 'blogData');
   const formattedDate = formatDate(blogData?.date);
   const faq = blogData?.faq;
   const categories = blogData?.categories;
@@ -111,10 +83,9 @@ const HeadHunterExecutiveJobSearch: React.FC = () => {
     console.error("bannerImagedetails parse error", e);
   }
   let slug = `blog/${blogData?.slug}`;
-  // Helper function to generate slug from title for anchor links
+  
   const generateSlug = (title: string): string => {
     if (!title) return "";
-    // Strip HTML tags
     const text = title.replace(/<[^>]*>/g, "");
     return text
       .toLowerCase()
@@ -138,9 +109,7 @@ const HeadHunterExecutiveJobSearch: React.FC = () => {
       twitterData1: "Alliance Recruitment Team",
       twitterLable2: "Est. reading time",
       twitterData2: "7 minutes",
-      robotindex: `${blogData?.allowIndexing === false ? "noindex" : "index"
-        }, ${blogData?.allowSearchEngines === false ? "nofollow" : "follow"
-        }`,
+      robotindex: `${blogData?.allowIndexing === false ? "noindex" : "index"}, ${blogData?.allowSearchEngines === false ? "nofollow" : "follow"}`,
       ogImage: {
         url: `${process.env.NEXT_PUBLIC_BACKEND_URL}${blogData?.bannerImage}`,
         height: 1200,
@@ -359,7 +328,7 @@ const HeadHunterExecutiveJobSearch: React.FC = () => {
                 <meta content="1" />
               </li>
             </ul>
-            <span className="delimiter">›</span>
+            <span className="delimiter" aria-hidden="true">›</span>
             {categories &&
               Array.isArray(categories) &&
               categories.map((category, index) => (
@@ -375,7 +344,7 @@ const HeadHunterExecutiveJobSearch: React.FC = () => {
                   {index < categories.length - 1 && ", "}
                 </React.Fragment>
               ))}
-            <span className="delimiter">›</span>
+            <span className="delimiter" aria-hidden="true">›</span>
             {blogData?.breadcrumbTitle || ""}
           </div>
         </section>
@@ -417,25 +386,14 @@ const HeadHunterExecutiveJobSearch: React.FC = () => {
                     </div>
                   </div>
                   <div>
-                    {/* <Image
-                      className="layout-1-bnr rmv-lazy-load"
-                      src={
-                        blogData?.bannerImage instanceof File
-                          ? URL.createObjectURL(blogData?.bannerImage)
-                          : `${process.env.NEXT_PUBLIC_BACKEND_URL}${blogData?.bannerImage}`
-                      }
-                      width={1200}
-                      height={434}
-                      alt={bannerImagedetails?.alt || ""}
-                      title={bannerImagedetails?.title}
-                    /> */}
                     <Image
                       className="layout-1-bnr rmv-lazy-load"
                       src={`${process.env.NEXT_PUBLIC_BACKEND_URL}${blogData?.bannerImage}`}
                       width={1200}
                       height={434}
-                      alt={bannerImagedetails?.alt || ""}
+                      alt={bannerImagedetails?.alt || "Blog banner image"}
                       title={bannerImagedetails?.title}
+                      priority
                     />
                     <ExploreWithAI
                       postUrl={blogData?.slug}
@@ -871,6 +829,61 @@ const HeadHunterExecutiveJobSearch: React.FC = () => {
       </div>
     </>
   ) : null;
+};
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  try {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/getAllBlog`);
+    const data = await response.json();
+    
+    if (data && data.status === 200 && Array.isArray(data.data)) {
+      const paths = data.data.map((blog: any) => ({
+        params: { slug: blog.slug },
+      }));
+      
+      return {
+        paths,
+        fallback: 'blocking',
+      };
+    }
+  } catch (error) {
+    console.error("Error fetching blog paths:", error);
+  }
+
+  return {
+    paths: [],
+    fallback: 'blocking',
+  };
+};
+
+export const getStaticProps: GetStaticProps = async ({ params }) => {
+  const urlSlug = params?.slug;
+
+  if (!urlSlug) {
+    return { notFound: true };
+  }
+
+  try {
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_BACKEND_URL}/getService?slug=${urlSlug}`
+    );
+    const post = await response.json();
+
+    if (!post || post.status !== 200 || !post.data) {
+      return { notFound: true };
+    }
+
+    return {
+      props: {
+        post,
+      },
+      // Revalidate every 10 minutes to keep content fresh
+      revalidate: 600,
+    };
+  } catch (error) {
+    console.error("Error fetching blog post in getStaticProps:", error);
+    return { notFound: true };
+  }
 };
 
 export default HeadHunterExecutiveJobSearch;

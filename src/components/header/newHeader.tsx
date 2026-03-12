@@ -82,10 +82,10 @@ const Header = () => {
               href="#"
               onClick={handleMenuIconClick}
               className="menu-icon ms-auto"
-              aria-label="Toggle mobile menu"
+              aria-label="Toggle mobile navigation menu"
             >
-              <i className="fas fa-bars"></i>
-              <i className="fas fa-times"></i>
+              <i className="fas fa-bars" aria-hidden="true"></i>
+              <i className="fas fa-times" aria-hidden="true"></i>
             </Link>
           </div>
 
