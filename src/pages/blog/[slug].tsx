@@ -83,7 +83,7 @@ const HeadHunterExecutiveJobSearch: React.FC<BlogPageProps> = ({ post }) => {
     console.error("bannerImagedetails parse error", e);
   }
   let slug = `blog/${blogData?.slug}`;
-  
+
   const generateSlug = (title: string): string => {
     if (!title) return "";
     const text = title.replace(/<[^>]*>/g, "");
@@ -835,12 +835,12 @@ export const getStaticPaths: GetStaticPaths = async () => {
   try {
     const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/getAllBlog`);
     const data = await response.json();
-    
+
     if (data && data.status === 200 && Array.isArray(data.data)) {
       const paths = data.data.map((blog: any) => ({
         params: { slug: blog.slug },
       }));
-      
+
       return {
         paths,
         fallback: 'blocking',
