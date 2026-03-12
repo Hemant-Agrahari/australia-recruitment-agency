@@ -9,14 +9,14 @@ import { generateDynamicMeta } from "@/meta/DynamicMeta";
 import Image from "next/image";
 import Head from "next/head";
 import dynamic from "next/dynamic";
-import ExploreWithAI from "@/components/explorewithai/ExploreWithAi";
-import SharePost from "@/components/sharepost/SharePost";
-import AuthorProfile from "@/components/author-profile";
-import TableOfContents from "@/components/TableOfContent/TableOfContent";
 import { useRouter } from "next/router";
-import BlogContactForm from "@/components/forms/BlogContactForm/BlogContactForm";
-import Author from "@/components/author/Author";
-const LatestUpdates = dynamic(() => import("@/components/LatestUpdates"));
+const ExploreWithAI = dynamic(() => import("@/components/explorewithai/ExploreWithAi"), { ssr: false });
+const SharePost = dynamic(() => import("@/components/sharepost/SharePost"), { ssr: false });
+const AuthorProfile = dynamic(() => import("@/components/author-profile"), { ssr: false });
+const TableOfContents = dynamic(() => import("@/components/TableOfContent/TableOfContent"), { ssr: false });
+const BlogContactForm = dynamic(() => import("@/components/forms/BlogContactForm/BlogContactForm"), { ssr: false });
+const Author = dynamic(() => import("@/components/author/Author"), { ssr: false });
+const LatestUpdates = dynamic(() => import("@/components/LatestUpdates"), { ssr: false });
 
 interface PostData {
   data: {

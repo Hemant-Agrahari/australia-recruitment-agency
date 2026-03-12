@@ -12,7 +12,6 @@ import "../../public/assets/css/globals.css";
 import "../../public/assets/css/footer.css";
 import "../../public/assets/css/blog.css";
 import "../../public/assets/css/fancybox.css";
-import "../../public/assets/css/landingpage-responsive.css";
 import "../../public/assets/css/responsive.css";
 import "../../public/assets/css/responsivecustom.css";
 import "../../public/assets/css/custom.css";
@@ -23,7 +22,6 @@ import "../../public/assets/css/franchiseEnquiry.css";
 import "../../public/assets/css/handbook.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import "../../public/assets/css/handbook.css";
 import "../../public/assets/css/franchisewhatsappcta.css";
 import "../../public/assets/css/autoPopupForm.css"
 import "../../public/assets/css/franchise-apply.css"
