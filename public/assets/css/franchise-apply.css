@@ -1,0 +1,340 @@
+.new-inner-pages-main {
+    background: #fafafa;
+}
+
+.new-inner-pages-main .main-banner {
+    background-color: #f6f7ff;
+}
+
+.new-inner-pages-main p.com-para {
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 150%;
+}
+
+.new-inner-pages-main .main-banner h1 {
+    color: #1d1a33;
+    font-size: clamp(30px, 3.15vw, 40px);
+    font-weight: 600;
+}
+
+.new-inner-pages-main .our-service .our-service-model {
+    background-color: #fff;
+    padding: 40px 27px;
+}
+
+/* .new-inner-pages-main .our-service .our-service-model h2.com-title {
+    font-size: 40px;
+} */
+.our-service-ul {
+    margin-bottom: 0;
+}
+
+.new-inner-pages-main .our-service .our-service-ul li {
+    padding: 20px 0;
+    border-top: 1px solid #d7d7d7;
+    padding-left: 20px;
+    position: relative;
+}
+
+.new-inner-pages-main .our-service .our-service-ul li:last-child {
+    padding-bottom: 0;
+}
+
+.new-inner-pages-main .our-service .our-service-ul li .small-title {
+    text-align: start;
+    padding-bottom: 10px;
+    font-size: 22px;
+    position: relative;
+}
+
+
+
+.new-inner-pages-main .our-service .our-service-ul .small-title::after {
+    position: absolute;
+    content: "";
+    top: 28%;
+    left: -2%;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #008dd2;
+}
+
+.new-inner-pages-main .icons-title-text {
+    display: inline-flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 20px;
+    white-space: nowrap;
+    color: #1d1a33;
+    font-size: 40px;
+    font-weight: 400;
+    padding: 45px 0 15px;
+}
+
+.new-inner-pages-main .comprehensive-support .comprehensive-support-card {
+    border-radius: 16px;
+    border: 1px solid #898989;
+    padding: 24px;
+    height: 100%;
+}
+
+.type-of-card {
+    background-color: #f5fcff;
+    border-radius: 16px;
+    padding: 32px;
+    height: 100%;
+}
+
+.new-inner-pages-main .design-title {
+    text-align: center;
+    margin: 0 auto;
+    display: inline-block;
+    border-top: 2px solid #008DD2;
+    border-bottom: 2px solid #008DD2;
+}
+
+.new-inner-pages-main .our-success-story .light-blue-bg {
+    background: #F1FAFF;
+    padding: 20px;
+}
+
+.new-inner-pages-main .our-success-story .light-blue-bg .profile-card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.new-inner-pages-main .main-banner {
+    background: #e4dfff url("https://cdn-cplne.nitrocdn.com/MUvDaouunyiRlJDPKNEQEVgYbdmSPiEZ/assets/images/optimized/rev-6b10ac7/www.alliancerecruitmentagency.com/wp-content/themes/alliancerecruitmentagency-child/images/banner-bg-img.png") no-repeat right bottom;
+    background-size: 100% 100%;
+}
+
+.new-inner-pages-main .faqs-steps-col {
+    background: linear-gradient(77.55deg, #393185 0%, #008dd2 100%);
+}
+
+.new-inner-pages-main .main-banner-link {
+    color: rgb(63, 63, 63);
+    white-space: nowrap;
+
+    .main-banner-link:hover {
+        color: #008DD2;
+    }
+}
+
+/* {main-banner form styles start} */
+
+.new-inner-pages-main .banner-from-franchise .consultation-form {
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, .25);
+    background: #fff;
+}
+
+.new-inner-pages-main .consultation-form {
+    padding: clamp(22px, 6vw, 30px);
+    border-radius: 8px;
+
+}
+
+.new-inner-pages-main .banner-from-franchise .consultation-form .row {
+    margin-left: -10px;
+    margin-right: -10px;
+}
+
+.new-inner-pages-main .banner-from-franchise .consultation-form form input,
+.consultation-form form select,
+.consultation-form form textarea {
+    border-radius: 12px;
+    background: #fff;
+    border: 1px solid #d6d6d6 !important;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 130%;
+    color: #494b4c !important;
+    padding: 14px 16px;
+}
+
+.new-inner-pages-main .banner-from-franchise .consultation-form button {
+    box-shadow: none;
+    font-weight: 600 !important;
+    line-height: 140%;
+    text-transform: capitalize;
+    background-color: #008dd2 !important;
+    border-radius: 4px !important;
+    color: #fff !important;
+    margin-bottom: 0;
+    border: 0;
+    padding: 9px 15px;
+    ;
+}
+
+/* {.main-banner form styles end} */
+
+.new-inner-pages-main .faqs-steps-col .accordion-flush .accordion-item:first-child {
+    border-top: 0;
+}
+
+.new-inner-pages-main .faqs-steps-col .accordion-button {
+    font-weight: 400;
+    font-size: clamp(18px, 2vw, 26px);
+    line-height: 150%;
+    color: #fff;
+    padding: clamp(20px, 2vw, 25px) 0;
+    background-color: transparent;
+    box-shadow: none;
+    justify-content: space-between;
+}
+
+.new-inner-pages-main .faqs-steps-col .accordion-flush .accordion-item {
+    border-right: 0;
+    border-left: 0;
+    border-radius: 0;
+    background-color: transparent;
+    border-color: rgba(255, 255, 255, .5);
+}
+
+.new-inner-pages-main .faqs-steps-col .accordion-body {
+    padding: 0 0 clamp(15px, 2vw, 20px) 0;
+    background-color: transparent;
+    font-weight: 400;
+    font-size: clamp(18px, 2vw, 20px);
+    line-height: 180%;
+    color: #fff;
+}
+
+.accordion-button:after {
+    flex-shrink: 0;
+    width: var(--bs-accordion-btn-icon-width);
+    height: var(--bs-accordion-btn-icon-width);
+    margin-left: auto;
+    content: "";
+    background-image: var(--bs-accordion-btn-icon);
+    background-repeat: no-repeat;
+    background-size: var(--bs-accordion-btn-icon-width);
+    transition: var(--bs-accordion-btn-icon-transition);
+    filter: invert(1);
+}
+
+.new-inner-pages-main .card-img-text .btns {
+    max-width: 156px;
+    min-height: 56px;
+}
+
+.new-inner-pages-main .client-reviews-col .client-reviews-box-inner .client-reviews-content .swiper-wrapper .swiper-pagination {
+    text-align: start;
+}
+
+/* .swiper-pagination-fraction, .swiper-pagination-custom, .swiper-horizontal > .swiper-pagination-bullets, .swiper-pagination-bullets.swiper-pagination-horizontal {
+    bottom: var(--swiper-pagination-bottom, 8px);
+    top: var(--swiper-pagination-top, auto);
+    left: 0;
+    width: 100%;
+} */
+
+.new-inner-pages-main .btn_primary {
+    color: #fff;
+    background: #008dd2;
+    border-color: #008dd2;
+}
+
+.new-inner-pages-main .btns {
+    font-size: clamp(16px, 1.4vw, 18px) !important;
+    font-weight: 600 !important;
+    line-height: 1.6;
+    display: inline-flex;
+    width: 100%;
+    max-width: 212px;
+    align-items: center;
+    justify-content: center;
+    vertical-align: baseline;
+    column-gap: .25rem;
+    white-space: nowrap;
+    height: 50px;
+    padding-inline: clamp(36px, 3.8vw, 50px);
+    border-radius: 8px !important;
+    border-width: 1px;
+    border-style: solid;
+    transition: all .2s ease-in-out;
+    cursor: pointer;
+    text-transform: capitalize;
+    box-shadow: none;
+}
+
+.new-inner-pages-main .service-col .service-card {
+    border: 1px solid #d7d7d7;
+    border-radius: 16px;
+    padding: clamp(25px, 3.8vw, 40px) clamp(20px, 3.8vw, 35px);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+/* {franchiseForm related css} */
+
+
+.new-apply-form .consultation-form {
+    padding: clamp(22px, 6vw, 30px);
+    border-radius: 8px;
+    background: #f6f7ff url("https://cdn-cplne.nitrocdn.com/MUvDaouunyiRlJDPKNEQEVgYbdmSPiEZ/assets/images/optimized/rev-6b10ac7/www.alliancerecruitmentagency.com/wp-content/uploads/2024/01/bg-consultation-form.png") no-repeat right bottom;
+    background-size: 100% 100%;
+}
+
+.new-apply-form .consultation-form .cus-container {
+    gap: 15px;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    border-radius: 5px;
+}
+
+
+.new-apply-form .consultation-form .cus-container .mid-flex {
+    gap: 15px;
+    margin: 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.new-apply-form .consultation-form .cus-container .mid-flex .main-inputs {
+    margin: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.new-apply-form .consultation-form .cus-container .main-inputs input,
+.new-apply-form .consultation-form .cus-container .main-inputs select {
+    width: 100%;
+    border-radius: 12px;
+    background: #fff;
+    border: 0;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 130%;
+    color: #494b4c !important;
+    padding: 14px 16px;
+}
+
+.new-apply-form .consultation-form .cus-container .form-group button {
+    width: 50%;
+    box-shadow: none;
+    font-weight: 600 !important;
+    line-height: 140%;
+    text-transform: capitalize;
+    background-color: #008dd2 !important;
+    border-radius: 4px !important;
+    color: #fff !important;
+    margin-top: 10px;
+    padding: 10px 25px;
+    border: 0;
+}
+
+@media (max-width:768px) {
+    .new-apply-form .consultation-form .cus-container .mid-flex {
+        flex-direction: column;
+    }
+
+}

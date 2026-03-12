@@ -1,0 +1,75 @@
+import { AppProps } from "next/app";
+import Layout from "../components/layout";
+import { ToastContainer } from 'react-toastify';
+
+// Importing custom CSS files
+import "../../public/assets/css/landingpage.css";
+import "bootstrap/dist/css/bootstrap.css";
+import "../../public/assets/css/header.css";
+import "../../public/assets/css/all.css";
+import "../../public/assets/css/style.css";
+import "../../public/assets/css/globals.css";
+import "../../public/assets/css/footer.css";
+import "../../public/assets/css/blog.css";
+import "../../public/assets/css/fancybox.css";
+import "../../public/assets/css/landingpage-responsive.css";
+import "../../public/assets/css/responsive.css";
+import "../../public/assets/css/responsivecustom.css";
+import "../../public/assets/css/custom.css";
+import "../../public/assets/css/intlTelInput.css";
+import "react-phone-input-2/lib/style.css";
+import 'react-toastify/dist/ReactToastify.css';
+import "../../public/assets/css/franchiseEnquiry.css";
+import "../../public/assets/css/handbook.css";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import "../../public/assets/css/handbook.css";
+import "../../public/assets/css/franchisewhatsappcta.css";
+import "../../public/assets/css/autoPopupForm.css"
+import "../../public/assets/css/franchise-apply.css"
+import ScrollToTop from "@/components/scrolltotop";
+import Script from "next/script";
+
+// Fix: Directly apply Verdana in global styles (system font)
+export default function App({ Component, pageProps }: AppProps) {
+  return (
+    <>
+      {/* Apply the font to the body directly in global styles */}
+      <style jsx global>{`
+        body {
+          font-family: 'Verdana', sans-serif; /* Apply Verdana with fallback to sans-serif */
+        }
+      `}</style>
+
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
+      <ToastContainer />
+
+      <Script
+        strategy="lazyOnload"
+        type="text/javascript/"
+        src="../assets/scripts/jQuery.js"
+        async
+      />
+      <Script
+        strategy="lazyOnload"
+        src="../assets/scripts/bootstrap5.js"
+        async
+      />
+      <Script
+        src="https://widgets.leadconnectorhq.com/loader.js"
+        data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js"
+        data-widget-id="6992b33ea0e96a16f262b2c0"
+        strategy="lazyOnload"
+      />
+      {/* Optional: Uncomment if you need to load Owl Carousel JS */}
+      {/* <Script
+        strategy="lazyOnload"
+        src="../assets/scripts/owl.carousel.min.js"
+        async
+      /> */}
+      <ScrollToTop />
+    </>
+  );
+} 

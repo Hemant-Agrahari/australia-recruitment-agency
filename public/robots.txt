@@ -1,0 +1,9 @@
+User-agent: *
+Disallow: /wp-includes/
+Disallow: /wp-admin/
+Disallow: /tag/
+Disallow: /category/
+Disallow: /thank-you
+Disallow: /thank-you-it-outsource
+
+SITEMAP: https://www.alliancerecruitmentagency.ae/sitemap.xml
