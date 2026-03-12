@@ -144,15 +144,19 @@ const HeadHunterExecutiveJobSearch: React.FC<BlogPageProps> = ({ post }) => {
     <>
       <CustomHead {...metadata} />
       <Head>
-        {/* Preload hero image for faster LCP */}
-        {blogData?.bannerImage && (
-          <link
-            rel="preload"
-            as="image"
-            href={`/_next/image?url=${encodeURIComponent(`${process.env.NEXT_PUBLIC_BACKEND_URL}${blogData.bannerImage}`)}&w=1200&q=75`}
-            fetchPriority="high"
-          />
-        )}
+        {/* Preload hero image for faster LCP - responsive sizes */}
+        {blogData?.bannerImage && (() => {
+          const imgBase = `/_next/image?url=${encodeURIComponent(`${process.env.NEXT_PUBLIC_BACKEND_URL}${blogData.bannerImage}`)}`;
+          return (
+            <link
+              rel="preload"
+              as="image"
+              imageSrcSet={`${imgBase}&w=640&q=75 640w, ${imgBase}&w=828&q=75 828w, ${imgBase}&w=1200&q=75 1200w`}
+              imageSizes="(max-width: 768px) 100vw, 1200px"
+              fetchPriority="high"
+            />
+          );
+        })()}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
