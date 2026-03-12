@@ -119,7 +119,8 @@ export const BlueBannerImageSection = ({ data }: { data: ServiceI }) => {
                 ? data?.image
                 : `${backend_url}${data?.image}`
             }
-            style={{ color: "transparent", backgroundSize: "contain" }}
+            sizes="(max-width: 768px) 100vw, 1200px"
+            style={{ objectFit: "contain" }}
           />
         </div>
       )}
@@ -232,6 +233,7 @@ export const SuccessStory = ({ data }: { data: ServiceI }) => {
                       ? data?.image
                       : `${backend_url}${data?.image}`
                   }
+                  sizes="(max-width: 768px) 100vw, 420px"
                   style={{ color: "transparent" }}
                 />
                 <Link target="_blank" href={data.imageLink || "#"}>
@@ -282,6 +284,7 @@ export const ImageCardSection = ({ data }: { data: ServiceI }) => {
                     ? data?.image
                     : `${backend_url}${data?.image}`
                 }
+                sizes="(max-width: 768px) 100vw, 636px"
                 style={{ color: "transparent" }}
               />
             </Link>

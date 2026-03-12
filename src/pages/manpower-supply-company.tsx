@@ -7,8 +7,6 @@ import meta from "../meta/meta.json"
 import * as Yup from 'yup';
 import { useFormik } from "formik";
 import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 import CustomHead from "@/components/Head";
 import Image from 'next/image';
 const validationSchema = Yup.object().shape({

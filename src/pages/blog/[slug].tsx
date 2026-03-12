@@ -394,6 +394,7 @@ const HeadHunterExecutiveJobSearch: React.FC<BlogPageProps> = ({ post }) => {
                       alt={bannerImagedetails?.alt || "Blog banner image"}
                       title={bannerImagedetails?.title}
                       priority
+                      sizes="(max-width: 768px) 100vw, 1200px"
                     />
                     <ExploreWithAI
                       postUrl={blogData?.slug}

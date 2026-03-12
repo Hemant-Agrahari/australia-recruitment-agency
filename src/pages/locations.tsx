@@ -2,7 +2,6 @@ import React from "react";
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
-// duplicate phone input CSS removed; globally loaded in _app
 import Banner from "@/components/Banner";
 import PhoneInputComponent from "@/utils/phoneInput/phoneInput";
 import HireTalent from "@/components/HireTalent";

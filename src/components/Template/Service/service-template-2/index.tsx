@@ -118,6 +118,7 @@ const ServiceTemplate2: React.FC<ServiceTemplate2Props> = ({ data }) => {
                   title={`${data.section3[0].imageAlt}`}
                   width="563"
                   height="297"
+                  sizes="(max-width: 768px) 100vw, 50vw"
                   className="img-fluid"
                 />}
               </div>
@@ -201,6 +202,7 @@ const ServiceTemplate2: React.FC<ServiceTemplate2Props> = ({ data }) => {
                     title={`${data.section5[0].imageAlt}`}
                     width="563"
                     height="297"
+                    sizes="(max-width: 768px) 100vw, 50vw"
                     className="img-fluid"
                   />}
                 </div>
@@ -285,6 +287,7 @@ const ServiceTemplate2: React.FC<ServiceTemplate2Props> = ({ data }) => {
                       title={data.section7[0].imageAlt}
                       width="563"
                       height="596"
+                      sizes="(max-width: 768px) 100vw, 50vw"
                       className="img-fluid"
                     />}
                   </Link>

@@ -3,28 +3,30 @@ import Layout from "../components/layout";
 import { ToastContainer } from 'react-toastify';
 
 // Importing custom CSS files
-import "../../public/assets/css/landingpage.css";
 import "bootstrap/dist/css/bootstrap.css";
 import "../../public/assets/css/header.css";
 import "../../public/assets/css/all.css";
 import "../../public/assets/css/style.css";
 import "../../public/assets/css/globals.css";
 import "../../public/assets/css/footer.css";
-import "../../public/assets/css/blog.css";
-import "../../public/assets/css/fancybox.css";
 import "../../public/assets/css/responsive.css";
 import "../../public/assets/css/responsivecustom.css";
 import "../../public/assets/css/custom.css";
-import "../../public/assets/css/intlTelInput.css";
-import "react-phone-input-2/lib/style.css";
-import 'react-toastify/dist/ReactToastify.css';
-import "../../public/assets/css/franchiseEnquiry.css";
-import "../../public/assets/css/handbook.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import "react-phone-input-2/lib/style.css";
+import "../../public/assets/css/landingpage.css";
+import "../../public/assets/css/blog.css";
+import "../../public/assets/css/handbook.css";
+import "../../public/assets/css/franchiseEnquiry.css";
+import "../../public/assets/css/franchise-apply.css";
+import "../../public/assets/css/autoPopupForm.css";
 import "../../public/assets/css/franchisewhatsappcta.css";
-import "../../public/assets/css/autoPopupForm.css"
-import "../../public/assets/css/franchise-apply.css"
+import "../../public/assets/css/landingpage-responsive.css";
+import "../../public/assets/css/owl.carousel.min.css";
+import "../../public/assets/css/owl.theme.default.css";
+import "../../public/assets/css/intlTelInput.css";
+import 'react-toastify/dist/ReactToastify.css';
 import ScrollToTop from "@/components/scrolltotop";
 import Script from "next/script";
 

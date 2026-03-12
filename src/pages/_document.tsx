@@ -34,6 +34,8 @@ class MyDocument extends Document<MyDocumentProps> {
     return (
       <Html lang={lang}>
         <Head>
+          <link rel="preconnect" href="https://allianceaeapi.alliancerecruitmentagency.ae" />
+          <link rel="dns-prefetch" href="https://allianceaeapi.alliancerecruitmentagency.ae" />
           <meta name="google-site-verification" content="x_jxqfvariuKFGjzKb_ckAid7_XNFINF_SNRyl2kSAY" />
           <meta name="yandex-verification" content="2b487a175b782b24" />
         </Head>

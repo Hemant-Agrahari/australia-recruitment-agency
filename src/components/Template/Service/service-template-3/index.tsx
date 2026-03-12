@@ -122,6 +122,7 @@ const ServiceTemplate3: React.FC<ServiceTemplate3Props> = ({ data }) => {
                     title={`${data.section3[0].imageAlt}`}
                     width="563"
                     height="297"
+                    sizes="(max-width: 768px) 100vw, 50vw"
                     className="img-fluid"
                   />
                 )}
@@ -211,6 +212,7 @@ const ServiceTemplate3: React.FC<ServiceTemplate3Props> = ({ data }) => {
                       title={`${data.section5[0].imageAlt}`}
                       width="563"
                       height="297"
+                      sizes="(max-width: 768px) 100vw, 50vw"
                       className="img-fluid"
                     />
                   )}
@@ -246,6 +248,7 @@ const ServiceTemplate3: React.FC<ServiceTemplate3Props> = ({ data }) => {
                             title={`${data.section6[0].imageAlt}`}
                             width="536"
                             height="354"
+                            sizes="(max-width: 768px) 100vw, 50vw"
                             className="img-fluid"
                           />
                         </DisabledLink>
@@ -325,6 +328,7 @@ const ServiceTemplate3: React.FC<ServiceTemplate3Props> = ({ data }) => {
                             title={data.section7[0].imageAlt}
                             width="563"
                             height="596"
+                            sizes="(max-width: 768px) 100vw, 50vw"
                             className="img-fluid"
                           />
                         </DisabledLink>
@@ -376,6 +380,7 @@ const ServiceTemplate3: React.FC<ServiceTemplate3Props> = ({ data }) => {
                             title={data.section8[0].imageAlt}
                             width="563"
                             height="297"
+                            sizes="(max-width: 768px) 100vw, 50vw"
                             className="img-fluid"
                           />
                         )}
@@ -452,6 +457,7 @@ const ServiceTemplate3: React.FC<ServiceTemplate3Props> = ({ data }) => {
                               title={data.section9[0].imageAlt}
                               width="563"
                               height="596"
+                              sizes="(max-width: 768px) 100vw, 50vw"
                               className="img-fluid position-relative"
                             />
                           )}
