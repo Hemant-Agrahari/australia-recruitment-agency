@@ -364,21 +364,9 @@ const HeadHunterExecutiveJobSearch: React.FC<BlogPageProps> = ({ post }) => {
               </li>
             </ul>
             <span className="delimiter" aria-hidden="true">›</span>
-            {categories &&
-              Array.isArray(categories) &&
-              categories.map((category, index) => (
-                <React.Fragment key={index}>
-                  <Link
-                    href={`/category/${category}`}
-                    rel="category tag"
-                    className="text-capitalize"
-                    key={index}
-                  >
-                    {category}
-                  </Link>
-                  {index < categories.length - 1 && ", "}
-                </React.Fragment>
-              ))}
+            <Link href="/webblog">
+              <span>Webblog</span>
+            </Link>
             <span className="delimiter" aria-hidden="true">›</span>
             {blogData?.breadcrumbTitle || ""}
           </div>
@@ -872,7 +860,18 @@ const HeadHunterExecutiveJobSearch: React.FC<BlogPageProps> = ({ post }) => {
 
 export const getStaticPaths: GetStaticPaths = async () => {
   try {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/getAllBlog`);
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_BACKEND_URL}/getBlogList?pageIndex=1&pageSize=10`
+    );
+
+    if (!response.ok) {
+      console.error("getAllBlog API failed:", response.status);
+      return {
+        paths: [],
+        fallback: "blocking",
+      };
+    }
+
     const data = await response.json();
 
     if (data && data.status === 200 && Array.isArray(data.data)) {
@@ -882,46 +881,77 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
       return {
         paths,
-        fallback: 'blocking',
+        fallback: "blocking",
       };
     }
+
+    return {
+      paths: [],
+      fallback: "blocking",
+    };
   } catch (error) {
     console.error("Error fetching blog paths:", error);
-  }
 
-  return {
-    paths: [],
-    fallback: 'blocking',
-  };
+    return {
+      paths: [],
+      fallback: "blocking",
+    };
+  }
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const urlSlug = params?.slug;
 
   if (!urlSlug) {
-    return { notFound: true };
+    return {
+      notFound: true,
+    };
   }
 
   try {
     const response = await fetch(
-      `${process.env.NEXT_PUBLIC_BACKEND_URL}/getService?slug=${urlSlug}`
+      `${process.env.NEXT_PUBLIC_BACKEND_URL}/getService?slug=${urlSlug}`,
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
     );
+
+    if (!response.ok) {
+      console.error(
+        "getService API failed:",
+        response.status,
+        response.statusText
+      );
+
+      return {
+        notFound: true,
+      };
+    }
+
     const post = await response.json();
 
     if (!post || post.status !== 200 || !post.data) {
-      return { notFound: true };
+      console.error("Invalid API response:", post);
+
+      return {
+        notFound: true,
+      };
     }
 
     return {
       props: {
         post,
       },
-      // Revalidate every 10 minutes to keep content fresh
-      revalidate: 600,
+      revalidate: 600, // regenerate every 10 minutes
     };
   } catch (error) {
-    console.error("Error fetching blog post in getStaticProps:", error);
-    return { notFound: true };
+    console.error("Error fetching blog post:", error);
+
+    return {
+      notFound: true,
+    };
   }
 };
 
